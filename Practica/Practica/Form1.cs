@@ -9,11 +9,16 @@ using System.Windows.Forms;
 
 namespace Practica
 {
-    public partial class Form1 : Form
+    public partial class Registro : Form
     {
-        public Form1()
+        public Registro()
         {
             InitializeComponent();
+        }
+
+        private void bntContraseña_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
