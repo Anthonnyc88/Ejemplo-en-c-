@@ -78,6 +78,40 @@ namespace capa_datos
             cmd.ExecuteNonQuery();
             conexion.Close();
         }
+
+        //Este metodo inserta datos de las ventas diarias en la base de datos
+        public void InsertarVentasDiarias(int codigo_venta, string fecha_venta, int ganancia_dia, string nombre_ruta)
+        {
+            Conectando_Base_Datos();
+            conexion.Open();
+            cmd = new NpgsqlCommand("INSERT INTO ventas (codigo_venta, fecha_venta, ganancia_dia, nombre_ruta ) VALUES ('" + codigo_venta + "', '" + fecha_venta + "', '" + ganancia_dia + "', '" + nombre_ruta + "')", conexion);
+            cmd.ExecuteNonQuery();
+            conexion.Close();
+        }
+
+        //Este metodo modifica datos de ventas diarias dentro de la base de datos
+        public void ModificarDatosVentasDiarias(int codigo_venta, string fecha_venta, int ganancia_dia, string nombre_ruta)
+        {
+            Conectando_Base_Datos();
+            conexion.Open();
+            NpgsqlCommand cmd = new NpgsqlCommand("UPDATE ventas SET fecha_venta = '" + fecha_venta + "', ganancia_dia = '" + ganancia_dia + "', nombre_ruta = '" + nombre_ruta + "' WHERE codigo_venta = '" + codigo_venta + "'", conexion);
+            cmd.ExecuteNonQuery();
+            conexion.Close();
+        }
+
+
+        //Este metodo elimina datos de ventas diarias dentro de la base de datos
+        public void EliminarDatosVentasDiarias(int codigo_venta)
+        {
+            Conectando_Base_Datos();
+            conexion.Open();
+            NpgsqlCommand cmd = new NpgsqlCommand("DELETE FROM venta WHERE codigo_venta = '" + codigo_venta + "'", conexion);
+            cmd.ExecuteNonQuery();
+            conexion.Close();
+        }
+
+
+
     }
 
 
